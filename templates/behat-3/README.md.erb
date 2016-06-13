@@ -20,7 +20,8 @@ Once Web Starter has been provisioned and you have created your Drupal site with
 ```
 $ vagrant ssh
 $ cd /vagrant/tests/behat
-$ bin/behat features/test.feature  -p local-selenium
+$ /usr/local/bin/phantomjs --webdriver=8643 &
+$ bin/behat features/TESTS/test.feature
 ```
 
 You should see output including the scenario and steps passed.
