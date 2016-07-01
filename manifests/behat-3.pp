@@ -18,11 +18,12 @@ class forumone::behat ($version = '2.5') {
     }
 
     file { "${path}/tests/behat-3":
-      ensure   => directory,
+      ensure   => present,
       owner    => $::host_uid,
       group    => $::host_gid,
       mode     => "644",
-      require  => File["${path}/tests"]
+      require  => File["${path}/tests"],
+      recurse  => true
     }
 
     file { "${path}/tests/test_results":
@@ -60,179 +61,6 @@ class forumone::behat ($version = '2.5') {
       ensure  => 'link',
       target  => "/opt/phantomjs-${phantomjs_version}-linux-x86_64/bin/phantomjs",
       require => Exec['forumone::behat::phantomjs::extract']
-    }
-
-    file { "${path}/tests/behat-3/files":
-      ensure   => directory,
-      owner    => $::host_uid,
-      group    => $::host_gid,
-      mode     => "644",
-      require  => File["${path}/tests/behat-3"]
-    }
-
-    file { "${path}/tests/behat-3/test_results":
-      ensure   => directory,
-      owner    => $::host_uid,
-      group    => $::host_gid,
-      mode     => "644",
-      require  => File["${path}/tests/behat-3"]
-    }
-
-    file { "${path}/tests/behat-3/patches":
-      ensure   => directory,
-      owner    => $::host_uid,
-      group    => $::host_gid,
-      mode     => "644",
-      require  => File["${path}/tests/behat-3"]
-    }
-
-    file { "${path}/tests/behat-3/patches/drupal-extension-login.patch":
-      ensure   => present,
-      owner    => $::host_uid,
-      group    => $::host_gid,
-      mode     => "644",
-      require  => File["${path}/tests/behat-3/patches"],
-      content  => template("forumone/behat-3/patches/drupal-extension-login.patch.erb")
-    }
-
-    file { "${path}/tests/behat-3/features":
-      ensure   => directory,
-      owner    => $::host_uid,
-      group    => $::host_gid,
-      mode     => "644",
-      require  => File["${path}/tests/behat-3"],
-    }
-
-    file { "${path}/tests/behat-3/features/bootstrap":
-      ensure   => directory,
-      owner    => $::host_uid,
-      group    => $::host_gid,
-      mode     => "644",
-      require  => File["${path}/tests/behat-3/features"],
-    }
-
-    file { "${path}/tests/behat-3/features/TESTS":
-      ensure   => directory,
-      owner    => $::host_uid,
-      group    => $::host_gid,
-      mode     => "644",
-      require  => File["${path}/tests/behat-3/features"],
-    }
-
-    file { "${path}/tests/behat-3/features/TESTS/test.feature":
-      ensure   => present,
-      owner    => $::host_uid,
-      group    => $::host_gid,
-      mode     => "644",
-      require  => File["${path}/tests/behat-3/features/TESTS"],
-      replace  => no,
-      content  => template("forumone/behat-3/features/TESTS/test.feature.erb")
-    }
-
-    file { "${path}/tests/behat-3/features/TESTS/test-js.feature":
-      ensure   => present,
-      owner    => $::host_uid,
-      group    => $::host_gid,
-      mode     => "644",
-      require  => File["${path}/tests/behat-3/features/TESTS"],
-      replace  => no,
-      content  => template("forumone/behat-3/features/TESTS/test-js.feature.erb")
-    }
-
-    file { "${path}/tests/behat-3/features/bootstrap/FeatureContext.php":
-      ensure   => present,
-      owner    => $::host_uid,
-      group    => $::host_gid,
-      mode     => "644",
-      require  => File["${path}/tests/behat-3/features/bootstrap"],
-      replace  => no,
-      content  => template("forumone/behat-3/features/bootstrap/FeatureContext.php.erb")
-    }
-
-    file { "${path}/tests/behat-3/behat.yml":
-      ensure   => present,
-      owner    => $::host_uid,
-      group    => $::host_gid,
-      mode     => "644",
-      replace  => no,
-      require  => File["${path}/tests/behat-3"],
-      content  => template("forumone/behat-3/behat.yml.erb")
-    }
-    
-    file { "${path}/tests/behat-3/behat.jenkins.yml":
-      ensure   => present,
-      owner    => $::host_uid,
-      group    => $::host_gid,
-      mode     => "644",
-      require  => File["${path}/tests/behat-3"],
-      replace  => no,
-      content  => template("forumone/behat-3/behat.jenkins.yml.erb")
-    }
-
-    file { "${path}/tests/behat-3/composer.json":
-      ensure   => present,
-      owner    => $::host_uid,
-      group    => $::host_gid,
-      mode     => "644",
-      require  => File["${path}/tests/behat-3"],
-      content  => template("forumone/behat-3/composer.json.erb")
-    }
-
-    file { "${path}/tests/behat-3/nodeconfig.server.json":
-      ensure   => present,
-      owner    => $::host_uid,
-      group    => $::host_gid,
-      mode     => "644",
-      require  => File["${path}/tests/behat-3"],
-      content  => template("forumone/behat-3/nodeconfig.server.json.erb")
-    }
-
-    file { "${path}/tests/behat-3/nodeconfig.mac.json":
-      ensure   => present,
-      owner    => $::host_uid,
-      group    => $::host_gid,
-      mode     => "644",
-      require  => File["${path}/tests/behat-3"],
-      replace  => no,
-      content  => template("forumone/behat-3/nodeconfig.mac.json.erb")
-    }
-
-    file { "${path}/tests/behat-3/nodeconfig.windows.json":
-      ensure   => present,
-      owner    => $::host_uid,
-      group    => $::host_gid,
-      mode     => "644",
-      require  => File["${path}/tests/behat-3"],
-      replace  => no,
-      content  => template("forumone/behat-3/nodeconfig.windows.json.erb")
-    }
-
-    file { "${path}/tests/behat-3/nodeconfig.linux.json":
-      ensure   => present,
-      owner    => $::host_uid,
-      group    => $::host_gid,
-      mode     => "644",
-      require  => File["${path}/tests/behat-3"],
-      replace  => no,
-      content  => template("forumone/behat-3/nodeconfig.linux.json.erb")
-    }
-
-    file { "${path}/tests/behat-3/README.md":
-      ensure   => present,
-      owner    => $::host_uid,
-      group    => $::host_gid,
-      mode     => "644",
-      require  => File["${path}/tests/behat-3"],
-      content  => template("forumone/behat-3/README.md.erb")
-    }
-
-    file { "${path}/tests/behat-3/selenium-server-standalone-2.48.2.jar":
-      ensure   => present,
-      owner    => $::host_uid,
-      group    => $::host_gid,
-      mode     => "644",
-      require  => File["${path}/tests/behat-3"],
-      source   => ["/etc/puppet/modules/forumone/templates/behat-3/selenium-server-standalone-2.48.2.jar"]
     }
 
     exec { 'web-starter-behat::composer':
