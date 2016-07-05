@@ -47,7 +47,7 @@ class forumone::behat ($version = '2.5') {
       cwd         => "${path}/tests/behat",
       path        => ['/usr/bin', '/user/local/bin'],
       creates     => $composer_lock,
-      require     => [Class['forumone::composer'], File["${path}/tests/behat/composer.json"]],
+      require     => [Class['forumone::composer']],
       environment => ["COMPOSER_HOME=${::forumone::composer::home}"],
       timeout     => 1800
     }
