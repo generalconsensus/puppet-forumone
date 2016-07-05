@@ -44,10 +44,10 @@ class forumone::behat ($version = '2.5') {
 
     exec { 'web-starter-behat::composer':
       command     => "composer install",
-      cwd         => "${path}/tests/behat-3",
+      cwd         => "${path}/tests/behat",
       path        => ['/usr/bin', '/user/local/bin'],
       creates     => $composer_lock,
-      require     => [Class['forumone::composer'], File["${path}/tests/behat-3/composer.json"]],
+      require     => [Class['forumone::composer'], File["${path}/tests/behat/composer.json"]],
       environment => ["COMPOSER_HOME=${::forumone::composer::home}"],
       timeout     => 1800
     }
