@@ -34,8 +34,8 @@ class forumone::behat ($version = '2.5') {
       require  => File["${path}/tests"]
     }
 
-    class { 'phantomjs':
-      package_version => '1.9.7',
+    class { '::phantomjs':
+      package_version => '2.1.1',
       package_update => true,
       install_dir => '/usr/local/bin',
       source_dir => '/opt',
