@@ -17,7 +17,7 @@ class forumone::behat ($version = '2.5') {
       require  => File["${path}"]
     }
 
-    file { "${path}/tests/behat-3":
+    file { "${path}/tests/behat":
       ensure   => present,
       owner    => $::host_uid,
       group    => $::host_gid,
