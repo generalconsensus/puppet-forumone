@@ -1,5 +1,5 @@
 class forumone::drush ($version = '7.1.0') {
-  $filename = "${version}.zip"
+  $filename = "${version}.tar.gz"
   $version_array = split($version, '[.]')
   $major_version = $version_array[0]
 
@@ -17,7 +17,7 @@ class forumone::drush ($version = '7.1.0') {
 
   # extract from the archive
   exec { 'forumone::drush::extract':
-    command => "unzip -o /opt/${filename} -d /opt",
+    command => "tar -xzf /opt/${filename} -C /opt",
     path    => ["/bin", "/usr/bin"],
     require => Exec["forumone::drush::download"],
     creates => '/opt/drush-${version}/README.md',

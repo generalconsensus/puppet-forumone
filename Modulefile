@@ -1,5 +1,5 @@
 name    'puppet-forumone'
-version '1.1.44'
+version '1.1.47'
 source ''
 author 'William Hurley'
 license 'GPL v2'
@@ -9,8 +9,7 @@ project_page ''
 
 ## Add dependencies, if any:
 dependency 'puppetlabs/apache', '1.0.1'
-dependency 'puppetlabs/apt', '1.1.x'
-dependency 'puppetlabs/concat', '1.0.x'
+dependency 'puppetlabs/concat', '1.1.x'
 dependency 'puppetlabs/ruby', '0.4.x'
 dependency 'stahnma/epel', '0.0.5'
 dependency 'puppetlabs/firewall', '0.4.x'

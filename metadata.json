@@ -1,21 +1,18 @@
 {
   "name": "puppet-forumone",
-  "version": "1.1.44",
+  "version": "1.1.46",
   "summary": "Forum One puppet module for development",
   "author": "William Hurley",
   "description": "Creates an idiosyncratic development environment for PHP or Javascript development",
   "dependencies": [
     {"name": "puppetlabs/apache","version_requirement": "1.0.1"},
-    {"name":"puppetlabs/apt","version_requirement":"1.1.x"},
-    {"name":"puppetlabs/concat","version_requirement":"1.0.x"},
+    {"name":"puppetlabs/concat","version_requirement":"1.1.x"},
     {"name":"puppetlabs/ruby","version_requirement":"0.4.x"},
     {"name":"stahnma/epel","version_requirement":"0.0.5"},
     {"version_requirement":"0.4.x","name":"puppetlabs/firewall"},
     {"name":"puppetlabs/firewall","version_requirement":"0.4.x"},
     {"version_requirement":"0.1.x","name":"thias/memcached"},
-    {"name":"thias/memcached","version_requirement":"0.1.x"},
     {"version_requirement":"0.0.11","name":"fsalum/redis"},
-    {"name":"fsalum/redis","version_requirement":"0.0.9"},
     {"name":"willdurand/nodejs","version_requirement":"1.8.x"},
     {"name":"thias/php","version_requirement":"0.3.x"},
     {"name":"alup/rbenv","version_requirement":"1.2.x"}
