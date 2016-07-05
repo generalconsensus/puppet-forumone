@@ -34,12 +34,13 @@ class forumone::behat ($version = '2.5') {
       require  => File["${path}/tests"]
     }
 
-    class { '::phantomjs':
-      package_version => '1.9.7',
-      package_update => true,
-      install_dir => '/usr/local/bin',
-      source_dir => '/opt',
-      timeout => 300
+    phantomjs::install { 'phantomjs_install':
+      target_dir           => "/usr/local/",
+      version              => '2.1.1',
+      http_repository      => "https://phantomjs.googlecode.com/files",
+      packaging            => 'tar.bz2',
+      overwrite            => false,
+      is_default_phantomjs => true
     }
 
     exec { 'web-starter-behat::composer':
