@@ -58,7 +58,7 @@ class forumone::behat ($version = '2.5') {
     owner    => $::host_uid,
     group    => $::host_gid,
     mode     => "777",
-    target => '${path}/tests/behat/vendor/behat/behat/bin/behat'
+    target => "${path}/tests/behat/vendor/behat/behat/bin/behat"
   }
 
 
