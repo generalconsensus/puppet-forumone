@@ -54,10 +54,11 @@ class forumone::behat ($version = '2.5') {
   }
 
   file { "${path}/tests/behat/bin/behat":
-    ensure   => file,
+    ensure   => link,
     owner    => $::host_uid,
     group    => $::host_gid,
     mode     => "777",
+    target => '${path}/tests/behat/vendor/behat/behat/bin/behat'
   }
 
 
