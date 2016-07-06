@@ -13,7 +13,7 @@ class forumone::behat ($version = '2.5') {
       ensure   => directory,
       owner    => $::host_uid,
       group    => $::host_gid,
-      mode     => "644",
+      mode     => "777",
       require  => File["${path}"]
     }
 
@@ -21,7 +21,7 @@ class forumone::behat ($version = '2.5') {
       ensure   => present,
       owner    => $::host_uid,
       group    => $::host_gid,
-      mode     => "644",
+      mode     => "777",
       require  => File["${path}/tests"],
       recurse  => true
     }
@@ -30,7 +30,7 @@ class forumone::behat ($version = '2.5') {
       ensure   => directory,
       owner    => $::host_uid,
       group    => $::host_gid,
-      mode     => "644",
+      mode     => "777",
       require  => File["${path}/tests"]
     }
 
@@ -51,6 +51,14 @@ class forumone::behat ($version = '2.5') {
       environment => ["COMPOSER_HOME=${::forumone::composer::home}"],
       timeout     => 1800
     }
+  }
+
+  file { "${path}/tests/behat/bin/behat":
+    ensure   => file,
+    owner    => $::host_uid,
+    group    => $::host_gid,
+    mode     => "777",
+    require  => File["${path}/tests/behat/bin/behat"]
   }
 
 }
