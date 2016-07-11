@@ -13,8 +13,7 @@ class forumone::behat ($version = '2.5') {
       ensure   => directory,
       owner    => $::host_uid,
       group    => $::host_gid,
-      mode     => "777",
-      require  => File["${path}"]
+      mode     => "777"
     }
 
     file { "${path}/tests/behat":
