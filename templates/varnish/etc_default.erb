@@ -43,11 +43,11 @@ MEMLOCK=82000
 # one content server selected by the vcl file, based on the request.  Use a 1GB
 # fixed-size cache file.
 #
-DAEMON_OPTS="-a <%= bind %> \
+DAEMON_OPTS="-a <%= @bind %> \
              -T localhost:6082 \
              -f /etc/varnish/default.vcl \
              -S /etc/varnish/secret \
-             -s malloc,<%= cache_size %>"
+             -s malloc,<%= @cache_size %>"
 
 
 ## Alternative 3, Advanced configuration
